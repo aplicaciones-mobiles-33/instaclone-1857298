@@ -3,17 +3,17 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PublicacionComponent } from './publicacion.component';
-import { PublicacionRoutingModule } from './publicacion-routing.module';
+import { PublicacionPageRoutingModule } from './publicacion-routing.module';
+import { PublicacionPage } from './publicacion.page';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: PublicacionComponent }]),
-    PublicacionRoutingModule,
+    RouterModule.forChild([{ path: '', component: PublicacionPage }]),
+    PublicacionPageRoutingModule,
   ],
-  declarations: [PublicacionComponent]
+  declarations: [PublicacionPage]
 })
-export class PublicacionComponentModule {}
+export class PublicacionPageModule {}
