@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicacionPageRoutingModule } from '../publicacion/publicacion-routing.module';
-import { HttpClient } from '@angular/common/http';
+import { PublicacionRoutingModule } from '../publicacion/publicacion-routing.module';
+//import { HttpClient } from '@angular/common/http';
 //import * as data from '../../assets/feed.json';
-import { dashCaseToCamelCase } from '@angular/compiler/src/util';
+//import { dashCaseToCamelCase } from '@angular/compiler/src/util';
+
+import { FirebaseDbService } from '../firebase-db.service';
 
 export interface Publicaciones{
-  id: number; 
-  imagen: string;
+  imagen: String;
+  id: number;
 }
 
 @Component({
@@ -16,19 +18,23 @@ export interface Publicaciones{
 })
 export class PublicacionesComponent implements OnInit {
   
-  constructor(private http: HttpClient) { }
+  constructor(private db: FirebaseDbService) { }
 
-   publicacionesPorUsuario = [];
+   publicaciones = [];
 
    obtenerPublicaciones(): void {
-     this.http.get('https://instagramapp-2f603-default-rtdb.firebaseio.com/publicaciones.json').subscribe(publicacionesRespuesta => {
-
-     
-       console.log(publicacionesRespuesta);
-     })
+     this.db.getPublicaciones().subscribe(
+       res => {
+         console.log(res);
+         this.publicaciones = res;
+       }
+     )
    }
+
+  
 
   ngOnInit() {
     this.obtenerPublicaciones();
+
   }
 }

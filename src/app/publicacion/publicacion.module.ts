@@ -1,19 +1,20 @@
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PublicacionPageRoutingModule } from './publicacion-routing.module';
-import { PublicacionPage } from './publicacion.page';
+import { PublicacionComponent } from './publicacion.component';
+import { PublicacionRoutingModule } from './publicacion-routing.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: PublicacionPage }]),
-    PublicacionPageRoutingModule,
+    RouterModule.forChild([{ path: '', component: PublicacionComponent }]),
+    PublicacionRoutingModule,
   ],
-  declarations: [PublicacionPage]
+  declarations: [PublicacionComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PublicacionPageModule {}
+export class PublicacionComponentModule {}
